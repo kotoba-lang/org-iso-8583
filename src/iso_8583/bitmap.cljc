@@ -19,7 +19,7 @@
   actual bit packing; there is no shortcut through decimal arithmetic
   that stays correct once bit 8 (the sign bit position in a signed byte)
   is involved."
-  (:require [clojure.string :as str]))
+  (:require [kotoba.lang.text :as str]))
 
 (defn relative-fields->bytes
   "`field-nums`: a set of ints in 1..64 (bit positions within one bitmap
@@ -60,7 +60,7 @@
 (defn- hex-char->nibble
   "-1 for a character that is not a hex digit, upper or lower case."
   [c]
-  (let [up (first (str/upper-case (str c)))]
+  (let [up (first (str/upper (str c)))]
     #?(:clj (.indexOf ^String hex-digits (str up))
        :cljs (.indexOf hex-digits up))))
 
