@@ -10,7 +10,7 @@
   correct by round trip and by hand-checked bit/nibble arithmetic rather
   than by claiming to match a specification example it cannot cite."
   (:require [clojure.test :refer [deftest is testing]]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [iso-8583.bcd :as bcd]
             [iso-8583.bitmap :as bitmap]
             [iso-8583.charcode :as cc]
@@ -80,7 +80,7 @@
     (is (= 16 (count (bitmap/bytes->hex bs))))
     (is (= bs (bitmap/hex->bytes (bitmap/bytes->hex bs))))
     (testing "lower-case hex accepted"
-      (is (= bs (bitmap/hex->bytes (str/lower-case (bitmap/bytes->hex bs))))))
+      (is (= bs (bitmap/hex->bytes (str/lower (bitmap/bytes->hex bs))))))
     (testing "wrong length or non-hex is rejected"
       (is (nil? (bitmap/hex->bytes "ABC")))
       (is (nil? (bitmap/hex->bytes "GGGGGGGGGGGGGGGG"))))))
