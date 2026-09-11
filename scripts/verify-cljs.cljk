@@ -9,7 +9,7 @@
 ;; runtimes is cheaper than assuming it -- see org-modbus's own copy of
 ;; this script for a case in this workspace where the assumption was wrong.
 ;;
-;;   nbb --classpath "$(clojure -A:cljs -Spath)" scripts/verify-cljs.cljs
+;;   nbb --classpath "$(clojure -A:cljs -Spath)" scripts/verify-cljs.cljk
 (ns verify-cljs
   (:require [clojure.test :as t]
             [iso-8583.core-test]))
